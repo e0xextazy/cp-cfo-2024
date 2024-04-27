@@ -3,7 +3,6 @@ import {ArrowLeft} from '@gravity-ui/icons';
 import {Button, Icon, Label, Link, Table, TableColumnConfig, Text} from '@gravity-ui/uikit';
 
 import {useAppState} from '@/store';
-
 import {CourseInfo} from '@/types';
 
 import './ResultPage.scss';
