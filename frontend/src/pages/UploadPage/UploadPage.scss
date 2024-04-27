@@ -1,0 +1,62 @@
+@use '../../styles/variables.scss' as variables;
+
+$block: '.upload-page';
+
+#{$block} {
+    &__page {
+        height: 100vh;
+        padding-top: 160px;
+        box-sizing: border-box;
+
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    &__wrapper {
+        display: flex;
+        flex-direction: column;
+        gap: 16px;
+    }
+
+    &__header_wrapper {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: 16px;
+    }
+
+    &__header {
+        text-align: center;
+        font-size: 48px !important;
+    }
+
+    &__team {
+        position: relative;
+        top: 4px;
+    }
+
+    &__upload {
+        display: flex;
+        align-items: center;
+        gap: 4px;
+    }
+
+    &__form_wrapper {
+        display: flex;
+        flex-direction: column;
+        gap: 12px;
+        padding: 16px 24px;
+    }
+
+    &__form {
+        display: flex;
+        flex-direction: column;
+        gap: 8px;
+    }
+
+    &__input {
+        display: flex;
+        gap: 8px;
+    }
+}
