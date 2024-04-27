@@ -1,0 +1,18 @@
+@use '../styles/variables.scss' as variables;
+
+$block: '.app';
+
+#{$block} {
+    &__app {
+        display: flex;
+        justify-content: center;
+        height: 100vh;
+        box-sizing: border-box;
+        padding: 60px;
+    }
+
+    &__content {
+        width: 100%;
+        max-width: 100%;
+    }
+}

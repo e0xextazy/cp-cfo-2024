@@ -4,13 +4,11 @@ $block: '.upload-page';
 
 #{$block} {
     &__page {
-        height: 100vh;
-        padding-top: 160px;
-        box-sizing: border-box;
-
         display: flex;
         flex-direction: column;
         align-items: center;
+
+        padding-top: 100px;
     }
 
     &__wrapper {

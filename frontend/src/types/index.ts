@@ -8,3 +8,16 @@ export type InputPayload = {
     type: 'text' | 'link' | 'file';
     content: any;
 };
+
+export type CourseInfo = {
+    url: string;
+    title: string;
+    price: number;
+    description: string;
+    technologies: string[];
+};
+
+export type Result = {
+    count: number;
+    result: any[];
+};

@@ -5,7 +5,7 @@ import {InputPayload} from '@/types';
 import {useMutation} from 'react-query';
 
 export const useUploadForm = () => {
-    const {inputPayload} = useAppState();
+    const {inputPayload, setResult} = useAppState();
 
     const mutation = useMutation(async (file: InputPayload) => {
         if (!inputPayload) {
@@ -21,7 +21,9 @@ export const useUploadForm = () => {
             throw new Error('Upload failed');
         }
 
-        return response.json();
+        const result = await response.json();
+
+        setResult(result);
     });
 
     return mutation;
