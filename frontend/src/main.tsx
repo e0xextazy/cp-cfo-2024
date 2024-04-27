@@ -7,11 +7,12 @@ import '@gravity-ui/uikit/styles/styles.css';
 import App from './app/App';
 
 import './styles/globals.scss';
+import {ENABLE_MOCK} from './config';
 
 const root = ReactDOM.createRoot(document.getElementById('root') as HTMLElement);
 
 async function enableMocking() {
-    if (process.env.NODE_ENV !== 'development') {
+    if (!ENABLE_MOCK) {
         return;
     }
 
