@@ -106,11 +106,13 @@ export const ResultPage = () => {
 
     const currentResult = result?.result.slice((page - 1) * ITEMS_PER_PAGE, page * ITEMS_PER_PAGE);
 
+    const count = result?.result.length || 0;
+
     return (
         <div className={b()}>
             <div className={b('header')}>
                 <PageTitle
-                    title={`Найдено ${result?.count} курсов`}
+                    title={`Найдено ${count} курсов`}
                     rightContent={
                         <Button className={b('back')} view="outlined" onClick={resetResult}>
                             <Icon data={ArrowLeft} size={12} />
@@ -131,13 +133,7 @@ export const ResultPage = () => {
                 <Table wordWrap columns={getColumns(result)} data={currentResult || []} />
             </div>
             <div className={b('footer')}>
-                <Pagination
-                    compact
-                    total={result?.count}
-                    onUpdate={setPage}
-                    page={page}
-                    pageSize={8}
-                />
+                <Pagination compact total={count} onUpdate={setPage} page={page} pageSize={8} />
             </div>
         </div>
     );
