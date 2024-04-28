@@ -19,7 +19,7 @@ import {PageTitle} from '@/shared/ui';
 import './ResultPage.scss';
 import {useState} from 'react';
 
-const getColumns = (res: Result | null): TableColumnConfig<CourseInfo>[] => [
+const getColumns = (): TableColumnConfig<CourseInfo>[] => [
     {
         id: 'title',
         name: 'Название курса',
@@ -42,13 +42,15 @@ const getColumns = (res: Result | null): TableColumnConfig<CourseInfo>[] => [
         id: 'vac_stack',
         name: 'Покрываемые навыки',
         template: (item) => {
-            const skills = res?.skills || [];
+            const vacSkills = item.vac_stack || [];
+            const courseSkills = item.cover || [];
+
             return (
                 <div className={b('vac_stack')}>
-                    {item.vac_stack.map((skill, idx) => (
+                    {courseSkills.map((skill, idx) => (
                         <Label
                             interactive
-                            theme={skills.includes(skill) ? 'success' : 'normal'}
+                            theme={vacSkills.includes(skill) ? 'success' : 'normal'}
                             className={b('technologies__item')}
                             key={idx}
                         >
@@ -104,9 +106,12 @@ export const ResultPage = () => {
     const {result, resetResult} = useAppState();
     const [page, setPage] = useState(1);
 
-    const currentResult = result?.result.slice((page - 1) * ITEMS_PER_PAGE, page * ITEMS_PER_PAGE);
+    const currentResult: CourseInfo[] =
+        result?.result.slice((page - 1) * ITEMS_PER_PAGE, page * ITEMS_PER_PAGE) || [];
 
     const count = result?.result.length || 0;
+
+    const vacSkills = currentResult[0].vac_stack;
 
     return (
         <div className={b()}>
@@ -122,7 +127,7 @@ export const ResultPage = () => {
                 />
                 <div className={b('skills')}>
                     <Text variant="body-2">Распознанные навыки:</Text>
-                    {result?.skills.map((skill) => (
+                    {vacSkills.map((skill) => (
                         <Label interactive theme="info">
                             {skill}
                         </Label>
@@ -130,7 +135,7 @@ export const ResultPage = () => {
                 </div>
             </div>
             <div className={b('content')}>
-                <Table wordWrap columns={getColumns(result)} data={currentResult || []} />
+                <Table wordWrap columns={getColumns()} data={currentResult || []} />
             </div>
             <div className={b('footer')}>
                 <Pagination compact total={count} onUpdate={setPage} page={page} pageSize={8} />

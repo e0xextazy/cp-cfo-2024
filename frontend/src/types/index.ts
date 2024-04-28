@@ -16,11 +16,11 @@ export type CourseInfo = {
     desc: string;
     match: number;
     vac_stack: string[];
+    cover: string[];
     duration: number;
 };
 
 export type Result = {
     count: number;
-    skills: string[];
     result: any[];
 };
