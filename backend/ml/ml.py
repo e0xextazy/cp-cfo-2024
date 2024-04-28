@@ -102,10 +102,10 @@ class RAGStringQueryEngine(CustomQueryEngine):
                 "price": n.node.metadata["цена"],
                 "link": n.node.metadata["ссылка"],
                 "desc": n.node.metadata["описание"],
-                "vac_stack": stack,
-                "match": float(n.score),
+                "vac_stack": list(set(stack)),
+                "match": int(float(n.score) * 100) / 100,
                 "duration": n.node.metadata["длительность"],
-                "cover": n.node.metadata["инструменты"],
+                "cover": [el.strip() for el in n.node.metadata["инструменты"].split(",")],
             }
         
             responses.append(course)
