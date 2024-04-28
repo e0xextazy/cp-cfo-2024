@@ -6,7 +6,7 @@ import {MOCK_RESULT} from './result.mock';
 
 export const handlers = [
     http.post(API_URL + ENDPOINTS.UPLOAD_FORM + '*', async () => {
-        await delay(3000);
+        await delay();
 
         return HttpResponse.json({
             count: 10,

@@ -1,13 +1,21 @@
 import block from 'bem-cn-lite';
 import {ArrowLeft} from '@gravity-ui/icons';
-import {Button, Icon, Label, Link, Table, TableColumnConfig, Text} from '@gravity-ui/uikit';
+import {
+    Button,
+    Icon,
+    Label,
+    Link,
+    Table,
+    TableColumnConfig,
+    Text,
+    Progress,
+} from '@gravity-ui/uikit';
 
 import {useAppState} from '@/store';
 import {CourseInfo} from '@/types';
+import {PageTitle} from '@/shared/ui';
 
 import './ResultPage.scss';
-
-const b = block('result-page');
 
 const columms: TableColumnConfig<CourseInfo>[] = [
     {
@@ -17,7 +25,7 @@ const columms: TableColumnConfig<CourseInfo>[] = [
         sticky: 'left',
         template: (item) => {
             return (
-                <Link href={item.url} visitable>
+                <Link href={item.url}>
                     <Text variant="subheader-1">{item.title}</Text>
                 </Link>
             );
@@ -26,19 +34,18 @@ const columms: TableColumnConfig<CourseInfo>[] = [
     {
         id: 'description',
         name: 'Описание',
-        width: 500,
+        width: 350,
     },
     {
         id: 'technologies',
-        name: 'Стек',
-        width: 300,
+        name: 'Покрываемые навыки',
         template: (item) => {
             return (
                 <div className={b('technologies')}>
                     {item.technologies.map((skill, idx) => (
                         <Label
                             interactive
-                            theme={'info'}
+                            theme="success"
                             className={b('technologies__item')}
                             key={idx}
                         >
@@ -52,24 +59,54 @@ const columms: TableColumnConfig<CourseInfo>[] = [
     {
         id: 'price',
         name: 'Цена',
+        width: 80,
         template: (item) => {
-            return <Text variant="subheader-1">{item.price} ₽</Text>;
+            return <Text variant="body-1">{item.price} ₽</Text>;
+        },
+    },
+    {
+        id: 'match',
+        name: 'Совпадение',
+        sticky: 'left',
+        template: (item) => {
+            return (
+                <Progress
+                    text={`${item.match * 100}%`}
+                    theme="success"
+                    size="m"
+                    value={item.match * 100}
+                />
+            );
+        },
+    },
+    {
+        id: 'months',
+        name: 'Продолжительность',
+        align: 'center',
+        template: (item) => {
+            const text = item.months !== undefined ? `${item.months} мес.` : 'Нет информации';
+
+            return <Text variant="body-1">{text}</Text>;
         },
     },
 ];
+
+const b = block('result-page');
 
 export const ResultPage = () => {
     const {result, resetResult} = useAppState();
 
     return (
         <div className={b()}>
-            <div className={b('header')}>
-                <Text variant="header-1">Список курсов</Text>
-                <Button view="outlined" onClick={resetResult}>
-                    <Icon data={ArrowLeft} size={12} />
-                    Обратно к форме
-                </Button>
-            </div>
+            <PageTitle
+                title={`Найдено ${result?.count} курсов`}
+                rightContent={
+                    <Button className={b('back')} view="outlined" onClick={resetResult}>
+                        <Icon data={ArrowLeft} size={12} />
+                        Обратно к форме
+                    </Button>
+                }
+            />
             <div className={b('content')}>
                 <Table wordWrap columns={columms} data={result?.result || []} />
             </div>

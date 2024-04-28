@@ -16,10 +16,22 @@ $block: '.result-page';
         gap: 16px;
     }
 
-    &__technologies {
+    &__header__title {
+        display: flex;
+        flex-direction: column;
+        gap: 4px;
+    }
+
+    &__yc-table__table {
+        width: 100%;
     }
 
     &__technologies__item {
         margin: 4px;
+    }
+
+    &__back {
+        position: relative;
+        top: 4px;
     }
 }

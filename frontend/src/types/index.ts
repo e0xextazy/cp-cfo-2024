@@ -14,7 +14,9 @@ export type CourseInfo = {
     title: string;
     price: number;
     description: string;
+    match: number;
     technologies: string[];
+    months: number;
 };
 
 export type Result = {

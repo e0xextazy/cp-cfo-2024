@@ -18,6 +18,7 @@ import {useAppState} from '@/store';
 
 import './UploadPage.scss';
 import {useUploadForm} from '@/hooks/useUploadForm';
+import {PageTitle} from '@/shared/ui';
 
 const InputTypesOptions: ControlGroupOption[] = [
     {
@@ -182,14 +183,14 @@ export const UploadPage = () => {
     return (
         <div className={b('page')}>
             <div className={b('wrapper')}>
-                <div className={b('header_wrapper')}>
-                    <Text className={b('header')} variant="header-1" as="h1">
-                        Посоветуй
-                    </Text>
-                    <Label theme="success" className={b('team')} size="m">
-                        5random
-                    </Label>
-                </div>
+                <PageTitle
+                    title="Посоветуй"
+                    rightContent={
+                        <Label theme="success" className={b('team')} size="m">
+                            5random
+                        </Label>
+                    }
+                />
                 <SelectInputType />
                 <Card className={b('form_wrapper')}>
                     <Text variant="body-2">Заполните информацию о вакансии</Text>
