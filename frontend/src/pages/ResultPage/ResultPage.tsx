@@ -9,6 +9,7 @@ import {
     TableColumnConfig,
     Text,
     Progress,
+    Pagination,
 } from '@gravity-ui/uikit';
 
 import {useAppState} from '@/store';
@@ -16,6 +17,7 @@ import {CourseInfo} from '@/types';
 import {PageTitle} from '@/shared/ui';
 
 import './ResultPage.scss';
+import {useState} from 'react';
 
 const columms: TableColumnConfig<CourseInfo>[] = [
     {
@@ -71,6 +73,7 @@ const columms: TableColumnConfig<CourseInfo>[] = [
         template: (item) => {
             return (
                 <Progress
+                    key={item.title}
                     text={`${item.match * 100}%`}
                     theme="success"
                     size="m"
@@ -93,8 +96,13 @@ const columms: TableColumnConfig<CourseInfo>[] = [
 
 const b = block('result-page');
 
+const ITEMS_PER_PAGE = 8;
+
 export const ResultPage = () => {
     const {result, resetResult} = useAppState();
+    const [page, setPage] = useState(1);
+
+    const currentResult = result?.result.slice((page - 1) * ITEMS_PER_PAGE, page * ITEMS_PER_PAGE);
 
     return (
         <div className={b()}>
@@ -108,7 +116,16 @@ export const ResultPage = () => {
                 }
             />
             <div className={b('content')}>
-                <Table wordWrap columns={columms} data={result?.result || []} />
+                <Table wordWrap columns={columms} data={currentResult || []} />
+            </div>
+            <div className={b('footer')}>
+                <Pagination
+                    compact
+                    total={result?.count}
+                    onUpdate={setPage}
+                    page={page}
+                    pageSize={8}
+                />
             </div>
         </div>
     );
