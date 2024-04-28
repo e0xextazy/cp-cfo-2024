@@ -1,0 +1,37 @@
+@use '../../styles/variables.scss' as variables;
+
+$block: '.result-page';
+
+#{$block} {
+    & {
+        display: flex;
+        flex-direction: column;
+        gap: 16px;
+        width: 100%;
+    }
+
+    &__header {
+        display: flex;
+        justify-content: space-between;
+        gap: 16px;
+    }
+
+    &__header__title {
+        display: flex;
+        flex-direction: column;
+        gap: 4px;
+    }
+
+    &__yc-table__table {
+        width: 100%;
+    }
+
+    &__technologies__item {
+        margin: 4px;
+    }
+
+    &__back {
+        position: relative;
+        top: 4px;
+    }
+}

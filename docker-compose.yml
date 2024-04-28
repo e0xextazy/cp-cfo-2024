@@ -1,0 +1,14 @@
+version: "3.8"
+services:
+  frontend:
+    container_name: cp-cfo-2024-frontend
+    build:
+      context: ./frontend
+      args:
+        - VITE_ENABLE_MOCK=${VITE_ENABLE_MOCK}
+        - VITE_API_HOST=${VITE_API_HOST}
+    restart: always
+    env_file: .env
+
+    ports:
+      - "81:80"

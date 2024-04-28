@@ -1,0 +1,17 @@
+@use '../../../styles/variables.scss' as variables;
+
+$block: '.page-title';
+
+#{$block} {
+    &__header_wrapper {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: 16px;
+    }
+
+    &__header {
+        text-align: center;
+        font-size: 48px !important;
+    }
+}
