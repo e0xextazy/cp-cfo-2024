@@ -2,13 +2,14 @@ import {CourseInfo} from '@/types';
 
 export const MOCK_RESULT: CourseInfo[] = [
     {
+        vac_stack: ['Архитектура', 'DevOps-инженер', 'Ethernet', 'Unix'],
         match: 0.89,
         duration: 12,
         link: 'https://gb.ru/geek_university/developer/architecture/devops',
         title: 'DevOps-инженер с нуля до Middle',
         price: 5223,
         desc: 'Вы научитесь настраивать пайплайны CI/CD, использовать подход «Инфраструктура как код» для настройки серверов и развёртывания инфраструктуры в облаке. Узнаете, в чём преимущество микросервисной архитектуры по сравнению с традиционной. Сможете работать с Docker и Kubernetes.',
-        vac_stack: [
+        cover: [
             'Архитектура',
             'DevOps-инженер',
             'Ethernet',
@@ -25,13 +26,14 @@ export const MOCK_RESULT: CourseInfo[] = [
         ],
     },
     {
+        vac_stack: ['Архитектура', 'DevOps-инженер', 'Ethernet', 'Unix'],
         match: 0.78,
         duration: 4,
         link: 'https://gb.ru/geek_university/management/accountant',
         title: 'Профессия Бухгалтер',
         price: 4049,
         desc: 'Бухгалтер следит за финансами компании, работает с документами и отчетностью. Помогает бизнесу отслеживать изменения в законе и избегать убытков',
-        vac_stack: [
+        cover: [
             'Инструменты',
             '1С:Бухгалтерия 8, редакция 3.0',
             '1С:зарплата и управление персоналом 8',
@@ -52,13 +54,14 @@ export const MOCK_RESULT: CourseInfo[] = [
         ],
     },
     {
+        vac_stack: ['Архитектура', 'DevOps-инженер', 'Ethernet', 'Unix'],
         match: 0.35,
         duration: 6,
         link: 'https://gb.ru/geek_university/marketing/seo',
         title: 'Курс «SEO-специалист»',
         price: 2550,
         desc: 'Вы изучите основы маркетинга: от иследования рынка и проработки идеи продукта до UX- исследований и презентации их результатов заказчику.  После — погрузитесь в изучение SEO-продвижения, получите профильные навыки и начнете карьеру.',
-        vac_stack: [
+        cover: [
             'Яндекс.Метрика',
             'Яндекс.Директ',
             'Vk',
