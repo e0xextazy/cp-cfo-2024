@@ -16,7 +16,7 @@ export type CourseInfo = {
     desc: string;
     match: number;
     vac_stack: string[];
-    months: number;
+    duration: number;
 };
 
 export type Result = {

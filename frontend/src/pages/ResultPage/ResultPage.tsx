@@ -59,14 +59,7 @@ const getColumns = (res: Result | null): TableColumnConfig<CourseInfo>[] => [
             );
         },
     },
-    {
-        id: 'price',
-        name: 'Цена',
-        width: 80,
-        template: (item) => {
-            return <Text variant="body-1">{item.price} ₽</Text>;
-        },
-    },
+
     {
         id: 'match',
         name: 'Совпадение',
@@ -84,13 +77,21 @@ const getColumns = (res: Result | null): TableColumnConfig<CourseInfo>[] => [
         },
     },
     {
-        id: 'months',
+        id: 'duration',
         name: 'Продолжительность',
         align: 'center',
         template: (item) => {
-            const text = item.months !== undefined ? `${item.months} мес.` : 'Нет информации';
+            const text = item.duration !== undefined ? `${item.duration} мес.` : 'Нет информации';
 
             return <Text variant="body-1">{text}</Text>;
+        },
+    },
+    {
+        id: 'price',
+        name: 'Стоимость',
+        width: 80,
+        template: (item) => {
+            return <Text variant="body-1">{item.price * 36} ₽</Text>;
         },
     },
 ];

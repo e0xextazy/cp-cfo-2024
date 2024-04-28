@@ -3,7 +3,7 @@ import {CourseInfo} from '@/types';
 export const MOCK_RESULT: CourseInfo[] = [
     {
         match: 0.89,
-        months: 12,
+        duration: 12,
         link: 'https://gb.ru/geek_university/developer/architecture/devops',
         title: 'DevOps-инженер с нуля до Middle',
         price: 5223,
@@ -26,7 +26,7 @@ export const MOCK_RESULT: CourseInfo[] = [
     },
     {
         match: 0.78,
-        months: 4,
+        duration: 4,
         link: 'https://gb.ru/geek_university/management/accountant',
         title: 'Профессия Бухгалтер',
         price: 4049,
@@ -53,7 +53,7 @@ export const MOCK_RESULT: CourseInfo[] = [
     },
     {
         match: 0.35,
-        months: 6,
+        duration: 6,
         link: 'https://gb.ru/geek_university/marketing/seo',
         title: 'Курс «SEO-специалист»',
         price: 2550,
