@@ -1,0 +1,45 @@
+The push refers to repository [docker.io/klordoo/hack-be]
+79285a13d345: Preparing
+e3e53f79394e: Preparing
+f47553d3fd38: Preparing
+406edabb362f: Preparing
+dfb7aa968c1a: Preparing
+3202db8ef61e: Preparing
+1ccd6f10c923: Preparing
+d748d953a5bd: Preparing
+9a6c88132041: Preparing
+82553f50c177: Preparing
+2c746e256285: Preparing
+89ca33c95b2e: Preparing
+83db175c22e2: Preparing
+c5d13b2949a2: Preparing
+7e43f593c900: Preparing
+072686bcd3db: Preparing
+3202db8ef61e: Waiting
+1ccd6f10c923: Waiting
+89ca33c95b2e: Waiting
+d748d953a5bd: Waiting
+9a6c88132041: Waiting
+82553f50c177: Waiting
+2c746e256285: Waiting
+83db175c22e2: Waiting
+c5d13b2949a2: Waiting
+7e43f593c900: Waiting
+072686bcd3db: Waiting
+dfb7aa968c1a: Pushed
+e3e53f79394e: Pushed
+406edabb362f: Pushed
+d748d953a5bd: Layer already exists
+1ccd6f10c923: Pushed
+9a6c88132041: Layer already exists
+82553f50c177: Layer already exists
+2c746e256285: Layer already exists
+89ca33c95b2e: Layer already exists
+83db175c22e2: Layer already exists
+c5d13b2949a2: Layer already exists
+7e43f593c900: Layer already exists
+072686bcd3db: Layer already exists
+3202db8ef61e: Pushed
+f47553d3fd38: Pushed
+79285a13d345: Pushed
+latest: digest: sha256:0da8842f12822edd08abebe5c5b202006e416c9f3d4cefa60532a8d09d8a084c size: 3697
