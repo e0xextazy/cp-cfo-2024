@@ -13,13 +13,13 @@ import {
 } from '@gravity-ui/uikit';
 
 import {useAppState} from '@/store';
-import {CourseInfo} from '@/types';
+import {CourseInfo, Result} from '@/types';
 import {PageTitle} from '@/shared/ui';
 
 import './ResultPage.scss';
 import {useState} from 'react';
 
-const columms: TableColumnConfig<CourseInfo>[] = [
+const getColumns = (res: Result | null): TableColumnConfig<CourseInfo>[] => [
     {
         id: 'title',
         name: 'Название курса',
@@ -27,27 +27,28 @@ const columms: TableColumnConfig<CourseInfo>[] = [
         sticky: 'left',
         template: (item) => {
             return (
-                <Link href={item.url}>
+                <Link href={item.link}>
                     <Text variant="subheader-1">{item.title}</Text>
                 </Link>
             );
         },
     },
     {
-        id: 'description',
+        id: 'desc',
         name: 'Описание',
         width: 350,
     },
     {
-        id: 'technologies',
+        id: 'vac_stack',
         name: 'Покрываемые навыки',
         template: (item) => {
+            const skills = res?.skills || [];
             return (
-                <div className={b('technologies')}>
-                    {item.technologies.map((skill, idx) => (
+                <div className={b('vac_stack')}>
+                    {item.vac_stack.map((skill, idx) => (
                         <Label
                             interactive
-                            theme="success"
+                            theme={skills.includes(skill) ? 'success' : 'normal'}
                             className={b('technologies__item')}
                             key={idx}
                         >
@@ -106,17 +107,27 @@ export const ResultPage = () => {
 
     return (
         <div className={b()}>
-            <PageTitle
-                title={`Найдено ${result?.count} курсов`}
-                rightContent={
-                    <Button className={b('back')} view="outlined" onClick={resetResult}>
-                        <Icon data={ArrowLeft} size={12} />
-                        Обратно к форме
-                    </Button>
-                }
-            />
+            <div className={b('header')}>
+                <PageTitle
+                    title={`Найдено ${result?.count} курсов`}
+                    rightContent={
+                        <Button className={b('back')} view="outlined" onClick={resetResult}>
+                            <Icon data={ArrowLeft} size={12} />
+                            Обратно к форме
+                        </Button>
+                    }
+                />
+                <div className={b('skills')}>
+                    <Text variant="body-2">Распознанные навыки:</Text>
+                    {result?.skills.map((skill) => (
+                        <Label interactive theme="info">
+                            {skill}
+                        </Label>
+                    ))}
+                </div>
+            </div>
             <div className={b('content')}>
-                <Table wordWrap columns={columms} data={currentResult || []} />
+                <Table wordWrap columns={getColumns(result)} data={currentResult || []} />
             </div>
             <div className={b('footer')}>
                 <Pagination

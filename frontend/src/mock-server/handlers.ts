@@ -14,6 +14,7 @@ export const handlers = [
         return HttpResponse.json({
             count,
             result,
+            skills: ['CI/CD', 'ELK', 'Docker', 'SQL', 'Excel', 'Telegram'],
         });
     }),
 ];
