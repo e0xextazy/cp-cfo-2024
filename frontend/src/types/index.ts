@@ -10,16 +10,17 @@ export type InputPayload = {
 };
 
 export type CourseInfo = {
-    url: string;
+    link: string;
     title: string;
     price: number;
-    description: string;
+    desc: string;
     match: number;
-    technologies: string[];
-    months: number;
+    vac_stack: string[];
+    duration: number;
 };
 
 export type Result = {
     count: number;
+    skills: string[];
     result: any[];
 };
