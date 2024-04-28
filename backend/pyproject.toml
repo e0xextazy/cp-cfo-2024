@@ -47,6 +47,7 @@ bitsandbytes = "^0.41.2.post2"
 grpcio = "^1.60.0"
 texify = "^0.1.8"
 python-multipart = "^0.0.9"
+pandas = "2.2.2"
 
 [tool.poetry.group.dev.dependencies]
 jupyter = "^1.0.0"

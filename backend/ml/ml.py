@@ -31,7 +31,7 @@ def create_docs(df):
     return documents
 
 
-df = pd.read_json("data/courses_plus.jsonl", lines=True)
+df = pd.read_json("ml/data/courses_plus.jsonl", lines=True, orient='records')
 df.dropna(inplace=True)
 df.drop_duplicates(subset=["title_preview"], inplace=True)
 df.title_preview = df.title_preview.apply(lambda x: x.split("\n")[0])
@@ -49,8 +49,8 @@ def setup_llm():
         bnb_4bit_use_double_quant=True,
     )
     llm = HuggingFaceLLM(
-        model_name="mistral_model",
-        tokenizer_name="mistral_model",
+        model_name="ml/mistral_model",
+        tokenizer_name="ml/mistral_model",
         query_wrapper_prompt=PromptTemplate(
             "<s>[INST] {query_str} [/INST] </s>\n"),
         context_window=8192,

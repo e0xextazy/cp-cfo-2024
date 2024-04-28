@@ -7,12 +7,16 @@ import subprocess
 import requests
 import json
 
+from ml.ml import get_predict
+
 
 app = FastAPI()
 
 
 def ml_text_to_jsonl(text: str) -> list[dict]:
-    return [{'price': 10, 'title':'C1'}, {'price': 20, 'title':'C2'}]
+    pred = get_predict(text)
+
+    return pred
 
 
 @app.post("/api/upload/file/")
