@@ -8,9 +8,12 @@ export const handlers = [
     http.post(API_URL + ENDPOINTS.UPLOAD_FORM + '*', async () => {
         await delay();
 
+        const result = [...MOCK_RESULT, ...MOCK_RESULT, ...MOCK_RESULT];
+        const count = result.length;
+
         return HttpResponse.json({
-            count: 10,
-            result: MOCK_RESULT,
+            count,
+            result,
         });
     }),
 ];
