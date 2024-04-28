@@ -3,7 +3,7 @@ import {CourseInfo} from '@/types';
 export const MOCK_RESULT: CourseInfo[] = [
     {
         vac_stack: ['Архитектура', 'DevOps-инженер', 'Ethernet', 'Unix'],
-        match: 0.89,
+        match: 0.8343444339,
         duration: 12,
         link: 'https://gb.ru/geek_university/developer/architecture/devops',
         title: 'DevOps-инженер с нуля до Middle',

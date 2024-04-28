@@ -61,4 +61,11 @@ $block: '.result-page';
         bottom: -8px;
         left: 0px;
     }
+
+    &__skills-list {
+        overflow: auto;
+        display: flex;
+        gap: 8px;
+        max-width: 450px;
+    }
 }

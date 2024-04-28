@@ -42,12 +42,15 @@ const getColumns = (res: Result | null): TableColumnConfig<CourseInfo>[] => [
         id: 'vac_stack',
         name: 'Покрываемые навыки',
         template: (item) => {
+            const vacSkills = item.vac_stack || [];
+            const courseSkills = item.cover || [];
+
             return (
                 <div className={b('vac_stack')}>
-                    {item.vac_stack.map((skill, idx) => (
+                    {courseSkills.map((skill, idx) => (
                         <Label
                             interactive
-                            theme={item.cover.includes(skill) ? 'success' : 'normal'}
+                            theme={vacSkills.includes(skill) ? 'success' : 'normal'}
                             className={b('technologies__item')}
                             key={idx}
                         >
@@ -67,7 +70,7 @@ const getColumns = (res: Result | null): TableColumnConfig<CourseInfo>[] => [
             return (
                 <Progress
                     key={item.title}
-                    text={`${(item.match * 10 * 100).toFixed(2)}%`}
+                    text={`${(item.match * 100).toFixed(2)}%`}
                     theme="success"
                     size="m"
                     value={item.match * 100}
@@ -103,9 +106,12 @@ export const ResultPage = () => {
     const {result, resetResult} = useAppState();
     const [page, setPage] = useState(1);
 
-    const currentResult = result?.result.slice((page - 1) * ITEMS_PER_PAGE, page * ITEMS_PER_PAGE);
+    const currentResult: CourseInfo[] =
+        result?.result.slice((page - 1) * ITEMS_PER_PAGE, page * ITEMS_PER_PAGE) || [];
 
     const count = result?.result.length || 0;
+
+    const vacSkills = currentResult[0].vac_stack;
 
     return (
         <div className={b()}>
@@ -121,11 +127,13 @@ export const ResultPage = () => {
                 />
                 <div className={b('skills')}>
                     <Text variant="body-2">Распознанные навыки:</Text>
-                    {result?.skills.map((skill) => (
-                        <Label interactive theme="info">
-                            {skill}
-                        </Label>
-                    ))}
+                    <div className={b('skills-list')}>
+                        {vacSkills.map((skill) => (
+                            <Label interactive theme="info">
+                                {skill}
+                            </Label>
+                        ))}
+                    </div>
                 </div>
             </div>
             <div className={b('content')}>
